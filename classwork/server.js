@@ -1,31 +1,31 @@
 var http = require('http')
 var express = require('express')
-var bodyParser = require('body-parser') //kheyal nai
-var app = express() // for checkout
-var server = http.Server(app) // Server port set
+var bodyParser = require('body-parser') 
+var app = express() 
+var server = http.Server(app) 
 var Article = require('./article.model')  
 //mongose
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-var dbURL = 'mongodb://localhost:27017/cse509'
+var dbURL = 'mongodb://localhost:27017/cse309'
 mongoose.connect(dbURL, {useNewUrlParser:true,useUnifiedTopology:true});
 mongoose.connection.on('error', function (err)  {
     console.log(err)
  });
-app.use(bodyParser.json()) // creat middele ware
-app.use(bodyParser.urlencoded({extended:true})) // convert url by browser to send
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:true})) 
 
 
 
 
 // your server routes go here
 app.get('/', function(request, response){
-    // console.log(request);
+    
     response.sendFile(__dirname + '/index.html');
 })
 
 app.get('/second', function(request, response){
-    // console.log(request);
+    
     response.sendFile(__dirname + '/second.html');
 })
 
